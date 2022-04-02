@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
+import { ApiResponse } from './api-response.type';
 
 @Injectable()
 export class ApiService {
@@ -12,10 +13,10 @@ export class ApiService {
       .then(response => response.json())
   }
 
-  public getFirstStash(): Promise<any> {
+  public getFirstStash(): Promise<ApiResponse> {
     const query = '_limit=1';
     const path = environment.apiUrl + '?' + query;
 
-    return this.get(query);
+    return ApiService.get<ApiResponse[]>(path).then(data => data[0]);
   }
 }
