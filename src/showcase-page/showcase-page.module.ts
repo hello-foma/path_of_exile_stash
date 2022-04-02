@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ShowcasePageComponent } from 'src/showcase-page/showcase-page.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ShowcasePageComponent
+  ],
   imports: [
     CommonModule
   ]
