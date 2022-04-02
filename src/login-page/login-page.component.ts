@@ -21,9 +21,14 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onLoginTry(form: NgForm) {
+  async onLoginTry (form: NgForm) {
     const {login} = form.value;
 
-    console.info(login);
+    try {
+      await this.authService.login(login);
+    } catch (err) {
+      // todo: handle error
+      console.error(err);
+    }
   }
 }

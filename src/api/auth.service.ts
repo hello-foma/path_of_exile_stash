@@ -16,4 +16,24 @@ export class AuthService {
 
     return Array.from(logins.keys());
   }
+
+  /**
+   * Login user
+   * check if login is correct
+   * if no - throws error
+   * todo: save login state locally
+   * todo: cache first stash
+   * @param login
+   */
+  public async login(login: string): Promise<boolean> {
+    const possibleLogins = await this.getLoginSuggest();
+
+    const isLoginExist = possibleLogins.some((stash) => stash === login);
+
+    if (isLoginExist) {
+      return true;
+    }
+
+    throw new Error('Wrong login');
+  }
 }
