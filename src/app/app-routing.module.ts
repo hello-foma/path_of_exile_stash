@@ -3,13 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from '../login-page/login-page.component';
 
 export const AppRoutes = {
-  login: 'login'
+  login: 'login',
+  showcase: 'showcase'
 };
 
 const routes: Routes = [
   {
     path: AppRoutes.login,
     component: LoginPageComponent
+  },
+  {
+    path: AppRoutes.showcase,
+    loadChildren: () => import('../showcase-page/showcase-page.module').then(m => m.ShowcasePageModule)
   },
   {
     path: '**',
