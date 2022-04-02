@@ -3,6 +3,11 @@ import { ApiService } from './api.service';
 
 @Injectable()
 export class AuthService {
+  private authUser: string | null = null;
+
+  public get currentUser(): string | null {
+    return this.authUser;
+  }
 
   constructor(private api: ApiService) { }
 
@@ -21,7 +26,6 @@ export class AuthService {
    * Login user
    * check if login is correct
    * if no - throws error
-   * todo: save login state locally
    * todo: cache first stash
    * @param login
    */
@@ -31,6 +35,7 @@ export class AuthService {
     const isLoginExist = possibleLogins.some((stash) => stash === login);
 
     if (isLoginExist) {
+      this.authUser = login;
       return true;
     }
 
