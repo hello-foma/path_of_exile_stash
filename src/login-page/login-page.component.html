@@ -8,6 +8,6 @@
   </form>
   <section>
     <h3>Hint: available logins</h3>
-    <p>some logins here</p>
+    <p *ngFor="let login of logins | async">{{ login }}</p>
   </section>
 </pes-page-layout>
