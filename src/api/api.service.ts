@@ -22,14 +22,6 @@ export class ApiService {
     return ApiService.get<ApiResponse[]>(path).then(data => data[0]);
   }
 
-  public async getStashForUser(userName: string): Promise<Stash | null> {
-    const stashes = await this.getFirstStash();
-
-    const userStash = stashes.stashes.find((stash) => stash.accountName === userName);
-
-    return userStash || null;
-  }
-
   public async getLeagueList(): Promise<string[]> {
     const stashes = await this.getFirstStash();
 

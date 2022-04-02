@@ -6,7 +6,7 @@
       <input type="checkbox">
     </label>
   </section>
-  <ul *ngIf="stash | async as stash">
+  <ul *ngIf="stashes | async as stash">
     <li *ngFor="let item of filteredItems | async">
       {{ item.name }}
     </li>

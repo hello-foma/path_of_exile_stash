@@ -1,24 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginPageComponent } from '../login-page/login-page.component';
+import { ShowcasePageComponent } from '../showcase-page/showcase-page.component';
 
 export const AppRoutes = {
-  login: 'login',
   showcase: 'showcase'
 };
 
 const routes: Routes = [
   {
-    path: AppRoutes.login,
-    component: LoginPageComponent
-  },
-  {
     path: AppRoutes.showcase,
-    loadChildren: () => import('../showcase-page/showcase-page.module').then(m => m.ShowcasePageModule)
+    component: ShowcasePageComponent
   },
   {
     path: '**',
-    redirectTo: AppRoutes.login
+    redirectTo: AppRoutes.showcase
   }
 ];
 

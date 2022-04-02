@@ -4,9 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from '../shared/shared.module';
-import { LoginPageModule } from '../login-page/login-page.module';
 import { ApiModule } from '../api/api.module';
-import { AuthService } from '../api/auth.service';
+import { ShowcasePageModule } from '../showcase-page/showcase-page.module';
 
 @NgModule({
   declarations: [
@@ -17,9 +16,9 @@ import { AuthService } from '../api/auth.service';
     AppRoutingModule,
     SharedModule,
     ApiModule,
-    LoginPageModule,
+    ShowcasePageModule
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
