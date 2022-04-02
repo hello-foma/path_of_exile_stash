@@ -1,6 +1,6 @@
 <pes-page-layout>
-  <ul>
-    <li *ngFor="let item of items">
+  <ul *ngIf="stash | async as stash">
+    <li *ngFor="let item of stash.items">
       {{ item.name }}
     </li>
   </ul>
