@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ShowcasePageComponent } from './showcase-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class ShowcasePageModule { }

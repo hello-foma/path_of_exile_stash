@@ -1,6 +1,7 @@
 <pes-page-layout>
+  <input type="search" [ngModel]="searchString" (ngModelChange)="onSearchType($event)">
   <ul *ngIf="stash | async as stash">
-    <li *ngFor="let item of stash.items">
+    <li *ngFor="let item of filteredItems | async">
       {{ item.name }}
     </li>
   </ul>
