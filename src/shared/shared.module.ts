@@ -8,6 +8,9 @@ import { PageLayoutComponent } from './page-layout/page-layout.component';
   declarations: [
     PageLayoutComponent
   ],
+  exports: [
+    PageLayoutComponent
+  ],
   imports: [
     CommonModule
   ]
