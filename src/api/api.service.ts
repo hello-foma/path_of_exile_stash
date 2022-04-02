@@ -6,7 +6,7 @@ export class ApiService {
 
   constructor() { }
 
-  private get<T>(query: string): Promise<T> {
+  private static get<T>(query: string): Promise<T> {
     // todo: error handling
     return fetch(query)
       .then(response => response.json())
