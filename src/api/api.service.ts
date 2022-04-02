@@ -29,4 +29,14 @@ export class ApiService {
 
     return userStash || null;
   }
+
+  public async getLeagueList(): Promise<string[]> {
+    const stashes = await this.getFirstStash();
+
+    const leagueNames = new Map<string, null>();
+
+    stashes.stashes.forEach((stash) => leagueNames.set(stash.league, null));
+
+    return Array.from(leagueNames.keys());
+  }
 }

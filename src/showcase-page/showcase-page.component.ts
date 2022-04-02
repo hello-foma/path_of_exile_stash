@@ -17,6 +17,7 @@ export class ShowcasePageComponent implements OnInit {
 
   public stash: Observable<Stash | null> = this.initStash();
   public filteredItems: Observable<Item[]> = this.initFilteredItems();
+  public leagueList: Observable<string[]> = from(this.api.getLeagueList());
   public searchString = '';
 
   constructor(

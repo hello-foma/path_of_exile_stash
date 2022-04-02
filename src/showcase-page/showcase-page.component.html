@@ -1,5 +1,11 @@
 <pes-page-layout>
   <input type="search" [ngModel]="searchString" (ngModelChange)="onSearchType($event)">
+  <section *ngFor="let league of leagueList | async">
+    <label>
+      {{ league }}
+      <input type="checkbox">
+    </label>
+  </section>
   <ul *ngIf="stash | async as stash">
     <li *ngFor="let item of filteredItems | async">
       {{ item.name }}
