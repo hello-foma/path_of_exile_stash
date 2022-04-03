@@ -56,14 +56,15 @@ export class ShowcasePageComponent implements OnInit {
           return [];
         }
 
-        const allItems = ([] as Item[]).concat(...stashes.map((stash) => stash.items))
-        const filteredByLeague = allItems.filter((item) => filterByLeague[item.league])
+        const filteredStashes = stashes.filter((stash) => filterByLeague[stash.league]);
+
+        const allItems = ([] as Item[]).concat(...filteredStashes.map((stash) => stash.items))
 
         if (searchString.length === 0) {
-          return filteredByLeague;
+          return allItems;
         }
 
-        return filteredByLeague.filter((item) => {
+        return allItems.filter((item) => {
           // todo: lowercase check
           const isByName = item.name.includes(searchString);
           const isByTypeLine = item.typeLine.includes(searchString);
