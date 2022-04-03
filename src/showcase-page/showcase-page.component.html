@@ -1,0 +1,27 @@
+<mat-drawer-container style="height: 100%">
+  <mat-drawer mode="side" opened>
+    <img style="padding: 20px" src="../assets/logo.svg" alt="Path of Exile: Stash logo">
+    <div style="padding: 20px">
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Search item by name</mat-label>
+        <input matInput type="search" [ngModel]="searchString" (ngModelChange)="onSearchType($event)">
+        <button *ngIf="searchString" matSuffix mat-icon-button aria-label="Clear" (click)="searchString=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <h3>Filter by league</h3>
+      <section *ngFor="let league of leagueList | async">
+        <mat-checkbox [checked]="(filterByLeague | async)?.[league] || false"
+                      (change)="onLeagueFilterChange(league, $event)">{{ league }}</mat-checkbox>
+      </section>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content style="padding: 20px">
+    <ng-container *ngFor="let item of filteredItems | async">
+      <mat-card>
+        <mat-card-title>{{ item.name || item.typeLine }}</mat-card-title>
+      </mat-card>
+      <br>
+    </ng-container>
+  </mat-drawer-content>
+</mat-drawer-container>
