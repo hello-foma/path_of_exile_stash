@@ -3,6 +3,7 @@ import { ApiService } from '../api/api.service';
 import { BehaviorSubject, combineLatest, from, map, Observable } from 'rxjs';
 import { Stash } from '../api/stash.type';
 import { Item } from '../api/item.type';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 
 type LeagueFilter = {
   [league: string]: boolean
@@ -88,10 +89,10 @@ export class ShowcasePageComponent implements OnInit {
     this.searchStringEvent.next(text);
   }
 
-  public onLeagueFilterChange(league: string, isActive: boolean) {
+  public onLeagueFilterChange(league: string, isActive: MatCheckboxChange) {
     const currentFilterValue = this.filterByLeague.getValue();
 
-    currentFilterValue[league] = isActive;
+    currentFilterValue[league] = isActive.checked;
 
     this.filterByLeague.next(currentFilterValue);
   }

@@ -3,6 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ShowcasePageComponent } from './showcase-page.component';
 import { FormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -11,7 +16,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   imports: [
     CommonModule,
     FormsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule
   ]
 })
 export class ShowcasePageModule { }

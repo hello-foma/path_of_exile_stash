@@ -1,16 +1,22 @@
-<mat-drawer-container>
-  <mat-drawer mode="side" opened [style.width.vw]="20">
+<mat-drawer-container style="height: 100%">
+  <mat-drawer mode="side" opened>
       <h1>
         Path of Exile: Stash
       </h1>
-    <input type="search" [ngModel]="searchString" (ngModelChange)="onSearchType($event)">
-    <section *ngFor="let league of leagueList | async">
-      <label>
-        {{ league }}
-        <input type="checkbox" [ngModel]="(filterByLeague | async)?.[league]"
-               (ngModelChange)="onLeagueFilterChange(league, $event)">
-      </label>
-    </section>
+    <div style="padding: 20px">
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Search item by name</mat-label>
+        <input matInput type="search" [ngModel]="searchString" (ngModelChange)="onSearchType($event)">
+        <button *ngIf="searchString" matSuffix mat-icon-button aria-label="Clear" (click)="searchString=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <h3>Filter by league</h3>
+      <section *ngFor="let league of leagueList | async">
+        <mat-checkbox [checked]="(filterByLeague | async)?.[league] || false"
+                      (change)="onLeagueFilterChange(league, $event)">{{ league }}</mat-checkbox>
+      </section>
+    </div>
   </mat-drawer>
   <mat-drawer-content><ul *ngIf="stashes | async as stash">
     <li *ngFor="let item of filteredItems | async">
