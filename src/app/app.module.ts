@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApiModule } from '../api/api.module';
 import { ShowcasePageModule } from '../showcase-page/showcase-page.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ShowcasePageModule } from '../showcase-page/showcase-page.module';
     BrowserModule,
     AppRoutingModule,
     ApiModule,
-    ShowcasePageModule
+    ShowcasePageModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
