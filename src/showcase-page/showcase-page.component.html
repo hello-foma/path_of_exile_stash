@@ -1,10 +1,8 @@
-<header>
-  <h1>
-    Path of Exile: Stash
-  </h1>
-</header>
-<div class="screen">
-  <aside class="menu">
+<mat-drawer-container>
+  <mat-drawer mode="side" opened [style.width.vw]="20">
+      <h1>
+        Path of Exile: Stash
+      </h1>
     <input type="search" [ngModel]="searchString" (ngModelChange)="onSearchType($event)">
     <section *ngFor="let league of leagueList | async">
       <label>
@@ -13,12 +11,10 @@
                (ngModelChange)="onLeagueFilterChange(league, $event)">
       </label>
     </section>
-  </aside>
-  <main class="content">
-    <ul *ngIf="stashes | async as stash">
-      <li *ngFor="let item of filteredItems | async">
-        {{ item.name || item.typeLine }}
-      </li>
-    </ul>
-  </main>
-</div>
+  </mat-drawer>
+  <mat-drawer-content><ul *ngIf="stashes | async as stash">
+    <li *ngFor="let item of filteredItems | async">
+      {{ item.name || item.typeLine }}
+    </li>
+  </ul></mat-drawer-content>
+</mat-drawer-container>
