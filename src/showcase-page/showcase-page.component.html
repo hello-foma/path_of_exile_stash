@@ -3,7 +3,8 @@
   <section *ngFor="let league of leagueList | async">
     <label>
       {{ league }}
-      <input type="checkbox">
+      <input type="checkbox" [ngModel]="(filterByLeague | async)?.[league]"
+             (ngModelChange)="onLeagueFilterChange(league, $event)">
     </label>
   </section>
   <ul *ngIf="stashes | async as stash">
