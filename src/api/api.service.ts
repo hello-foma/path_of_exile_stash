@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { ApiResponse } from './api-response.type';
-import { Stash } from 'src/api/stash.type';
 
 @Injectable()
 export class ApiService {
@@ -27,7 +26,13 @@ export class ApiService {
 
     const leagueNames = new Map<string, null>();
 
-    stashes.stashes.forEach((stash) => leagueNames.set(stash.league, null));
+    stashes.stashes.forEach((stash) => {
+      if (stash.league === null) {
+        return;
+      }
+
+      leagueNames.set(stash.league, null);
+    });
 
     return Array.from(leagueNames.keys());
   }
