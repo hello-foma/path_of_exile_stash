@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ApiService } from '../api/api.service';
-import { BehaviorSubject, combineLatest, from, map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, combineLatest, from, map, Observable } from 'rxjs';
 import { Stash } from '../api/stash.type';
 import { Item } from '../api/item.type';
 
@@ -44,6 +44,22 @@ export class ShowcasePageComponent implements OnInit {
     return leagues;
   }
 
+  private filterItemsByString(items: Item[], searchString: string): Item[] {
+    const normalize = (s: string) => s.trim().toLowerCase();
+    const normalizedSearchString = normalize(searchString);
+
+    if (normalizedSearchString.length === 0) {
+      return items;
+    }
+
+    return items.filter((item) => {
+      const isByName = normalize(item.name).includes(normalizedSearchString);
+      const isByTypeLine = normalize(item.typeLine).includes(normalizedSearchString);
+
+      return isByName || isByTypeLine;
+    });
+  }
+
   private initFilteredItems(): Observable<Item[]> {
     return combineLatest([
       this.stashes,
@@ -57,20 +73,9 @@ export class ShowcasePageComponent implements OnInit {
         }
 
         const filteredStashes = stashes.filter((stash) => filterByLeague[stash.league]);
-
         const allItems = ([] as Item[]).concat(...filteredStashes.map((stash) => stash.items))
 
-        if (searchString.length === 0) {
-          return allItems;
-        }
-
-        return allItems.filter((item) => {
-          // todo: lowercase check
-          const isByName = item.name.includes(searchString);
-          const isByTypeLine = item.typeLine.includes(searchString);
-
-          return isByName || isByTypeLine;
-        });
+        return this.filterItemsByString(allItems, searchString);
       })
     );
   }
