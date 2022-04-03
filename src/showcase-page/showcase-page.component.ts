@@ -60,6 +60,15 @@ export class ShowcasePageComponent implements OnInit {
     });
   }
 
+  private filterStashByLeague(stashes: Stash[], leagueFilter: LeagueFilter): Stash[] {
+    const isNoLeaguesSelected = Object.keys(leagueFilter).length === 0;
+    if (stashes === null || isNoLeaguesSelected) {
+      return [];
+    }
+
+    return  stashes.filter((stash) => leagueFilter[stash.league]);
+  }
+
   private initFilteredItems(): Observable<Item[]> {
     return combineLatest([
       this.stashes,
@@ -67,12 +76,7 @@ export class ShowcasePageComponent implements OnInit {
       this.filterByLeague
     ]).pipe(
       map(([stashes, searchString, filterByLeague]) => {
-        const isNoLeaguesSelected = Object.keys(filterByLeague).length === 0;
-        if (stashes === null || isNoLeaguesSelected) {
-          return [];
-        }
-
-        const filteredStashes = stashes.filter((stash) => filterByLeague[stash.league]);
+        const filteredStashes = this.filterStashByLeague(stashes, filterByLeague);
         const allItems = ([] as Item[]).concat(...filteredStashes.map((stash) => stash.items))
 
         return this.filterItemsByString(allItems, searchString);
