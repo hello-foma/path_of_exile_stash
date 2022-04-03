@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ApiService } from '../api/api.service';
-import { BehaviorSubject, combineLatest, from, map, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, from, map, Observable, shareReplay } from 'rxjs';
 import { Stash } from '../api/stash.type';
 import { Item } from '../api/item.type';
 import { MatCheckboxChange } from '@angular/material/checkbox';
@@ -21,7 +21,7 @@ export class ShowcasePageComponent implements OnInit {
   public filterByLeague = new BehaviorSubject<LeagueFilter>({});
   public stashes: Observable<Stash[]> = from(this.api.getFirstStash().then(({stashes}) => stashes));
   public leagueList: Observable<string[]> = from(this.initLeagueList());
-  public filteredItems: Observable<Item[]> = this.initFilteredItems();
+  public filteredItems: Observable<Item[]> = this.initFilteredItems().pipe(shareReplay(1));
   public searchString = '';
 
   constructor(
