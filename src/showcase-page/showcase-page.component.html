@@ -9,7 +9,7 @@
   </section>
   <ul *ngIf="stashes | async as stash">
     <li *ngFor="let item of filteredItems | async">
-      {{ item.name }}
+      {{ item.name || item.typeLine }}
     </li>
   </ul>
 </pes-page-layout>
