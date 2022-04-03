@@ -17,6 +17,11 @@
     </div>
   </mat-drawer>
   <mat-drawer-content style="padding: 20px">
+    <ng-container *ngIf="(filteredItems | async)?.length === 0">
+      <mat-card>
+        <mat-card-content>Nothing found</mat-card-content>
+      </mat-card>
+    </ng-container>
     <ng-container *ngFor="let item of filteredItems | async">
       <mat-card>
         <mat-card-title>{{ item.name || item.typeLine }}</mat-card-title>
