@@ -18,9 +18,12 @@
       </section>
     </div>
   </mat-drawer>
-  <mat-drawer-content><ul *ngIf="stashes | async as stash">
-    <li *ngFor="let item of filteredItems | async">
-      {{ item.name || item.typeLine }}
-    </li>
-  </ul></mat-drawer-content>
+  <mat-drawer-content style="padding: 20px">
+    <ng-container *ngFor="let item of filteredItems | async">
+      <mat-card>
+        <mat-card-title>{{ item.name || item.typeLine }}</mat-card-title>
+      </mat-card>
+      <br>
+    </ng-container>
+  </mat-drawer-content>
 </mat-drawer-container>
