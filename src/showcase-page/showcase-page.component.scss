@@ -1,0 +1,14 @@
+:host {
+  .screen {
+    display: flex;
+  }
+
+  .menu {
+    min-width: 250px;
+    width: 20vw;
+  }
+
+  .content {
+    width: 80vw;
+  }
+}

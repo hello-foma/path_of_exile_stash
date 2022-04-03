@@ -1,16 +1,24 @@
-<header>Path of Exile: Stash</header>
-<main>
-  <input type="search" [ngModel]="searchString" (ngModelChange)="onSearchType($event)">
-  <section *ngFor="let league of leagueList | async">
-    <label>
-      {{ league }}
-      <input type="checkbox" [ngModel]="(filterByLeague | async)?.[league]"
-             (ngModelChange)="onLeagueFilterChange(league, $event)">
-    </label>
-  </section>
-  <ul *ngIf="stashes | async as stash">
-    <li *ngFor="let item of filteredItems | async">
-      {{ item.name || item.typeLine }}
-    </li>
-  </ul>
-</main>
+<header>
+  <h1>
+    Path of Exile: Stash
+  </h1>
+</header>
+<div class="screen">
+  <aside class="menu">
+    <input type="search" [ngModel]="searchString" (ngModelChange)="onSearchType($event)">
+    <section *ngFor="let league of leagueList | async">
+      <label>
+        {{ league }}
+        <input type="checkbox" [ngModel]="(filterByLeague | async)?.[league]"
+               (ngModelChange)="onLeagueFilterChange(league, $event)">
+      </label>
+    </section>
+  </aside>
+  <main class="content">
+    <ul *ngIf="stashes | async as stash">
+      <li *ngFor="let item of filteredItems | async">
+        {{ item.name || item.typeLine }}
+      </li>
+    </ul>
+  </main>
+</div>
