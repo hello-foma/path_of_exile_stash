@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from '../shared/shared.module';
 import { ApiModule } from '../api/api.module';
 import { ShowcasePageModule } from '../showcase-page/showcase-page.module';
 
@@ -14,7 +13,6 @@ import { ShowcasePageModule } from '../showcase-page/showcase-page.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
     ApiModule,
     ShowcasePageModule
   ],

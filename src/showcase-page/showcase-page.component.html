@@ -1,4 +1,5 @@
-<pes-page-layout>
+<header>Path of Exile: Stash</header>
+<main>
   <input type="search" [ngModel]="searchString" (ngModelChange)="onSearchType($event)">
   <section *ngFor="let league of leagueList | async">
     <label>
@@ -12,4 +13,4 @@
       {{ item.name || item.typeLine }}
     </li>
   </ul>
-</pes-page-layout>
+</main>
