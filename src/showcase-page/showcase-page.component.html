@@ -1,5 +1,11 @@
+<mat-toolbar *ngIf="isMobile" [color]="'primary'">
+  <button mat-icon-button aria-label="open side menu" (click)="isMenuOpen = !isMenuOpen">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1>Path of Exile: Stash</h1>
+</mat-toolbar>
 <mat-drawer-container>
-  <mat-drawer mode="side" opened>
+  <mat-drawer [mode]="isMobile ? 'over' : 'side'" [opened]='isMenuOpen' (closed)="isMenuOpen = false">
     <img class="logo" src="../assets/logo.svg" alt="Path of Exile: Stash logo">
     <div class="filters">
       <mat-form-field appearance="fill">
