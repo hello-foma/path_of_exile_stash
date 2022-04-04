@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { ShowcasePageComponent } from './showcase-page.component';
 
@@ -24,7 +25,8 @@ import { ShowcasePageComponent } from './showcase-page.component';
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule
   ]
 })
 export class ShowcasePageModule { }

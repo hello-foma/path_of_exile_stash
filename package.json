@@ -1,18 +1,15 @@
 {
   "name": "path-of-exile-stash",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "engines": {
     "node": "16.13.1",
     "npm": "8.1.2"
   },
   "scripts": {
     "ng": "ng",
-    "set-env": "node set-env.js",
-    "start": "npm run set-env && json-server --watch db.json & ng serve",
+    "start": "json-server --watch db.json & ng serve",
     "build": "ng build",
-    "server": "node server.js",
-    "serve-build": "npm run set-env && npm run server",
-    "watch": "npm run set-env && ng build --watch --configuration development",
+    "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "release": "standard-version"
   },

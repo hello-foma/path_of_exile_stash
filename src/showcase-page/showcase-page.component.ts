@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BehaviorSubject, combineLatest, from, map, Observable, shareReplay } from 'rxjs';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 
@@ -16,17 +16,24 @@ type LeagueFilter = {
   styleUrls: ['./showcase-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ShowcasePageComponent {
+export class ShowcasePageComponent implements OnInit {
   public searchString = '';
   public filterByLeague = new BehaviorSubject<LeagueFilter>({});
   public searchStringEvent = new BehaviorSubject('');
   public stashes: Observable<Stash[]> = from(this.api.getFirstStash().then(({stashes}) => stashes));
   public leagueList: Observable<string[]> = from(this.initLeagueList());
   public filteredItems: Observable<Item[]> = this.initFilteredItems().pipe(shareReplay(1));
+  public isMobile = false;
+  public isMenuOpen = false;
 
   constructor(
     private api: ApiService,
   ) { }
+
+  ngOnInit() {
+    this.isMobile = document.body.clientWidth < 550;
+    this.isMenuOpen = !this.isMobile;
+  }
 
   private async initLeagueList(): Promise<string[]> {
     const leagues = await this.api.getLeagueList();

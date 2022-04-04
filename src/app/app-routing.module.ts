@@ -3,19 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ShowcasePageComponent } from '../showcase-page/showcase-page.component';
 
-export const AppRoutes = {
-  showcase: 'showcase'
-};
-
 const routes: Routes = [
   {
-    path: AppRoutes.showcase,
+    path: '**',
     component: ShowcasePageComponent
   },
-  {
-    path: '**',
-    redirectTo: AppRoutes.showcase
-  }
 ];
 
 @NgModule({
