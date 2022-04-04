@@ -1,10 +1,12 @@
 const express = require('express')
+const jsonDatabase = require('json-server');
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
 const app = express();
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/path_of_exile_stash'));
+app.use('', jsonDatabase.router('db.json', {}));
 app.get('/*', function(req,res) {
   res.sendFile(path.join(__dirname+'/dist/path_of_exile_stash/index.html'));
 });
