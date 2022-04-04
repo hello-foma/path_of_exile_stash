@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/hello-foma/path_of_exile_stash/compare/v1.0.9...v1.1.0) (2022-04-04)
+
+
+### Features
+
+* **showcase:** mobile view ([e324a54](https://github.com/hello-foma/path_of_exile_stash/commit/e324a54f1dc24602250cf5e20e7345171e846520))
+
+
+### Bug Fixes
+
+* **build:** fix environment get method ([2a6fb94](https://github.com/hello-foma/path_of_exile_stash/commit/2a6fb94287c94aeeb81750c02925e2209eadae3b))
+* **build:** heroku api ([eada9db](https://github.com/hello-foma/path_of_exile_stash/commit/eada9db58a8d744d9d078863b46412ad9883eb9f))
+* **build:** remove redundant routes ([70537ef](https://github.com/hello-foma/path_of_exile_stash/commit/70537ef1dc3e5535b0497f3f512d5b975a6b8133))
+* **build:** style of league filter ([c980340](https://github.com/hello-foma/path_of_exile_stash/commit/c980340a9790b27a7b8432e4f84c7c273c93dc7d))
+
 ### [1.0.9](https://github.com/hello-foma/path_of_exile_stash/compare/v1.0.8...v1.0.9) (2022-04-04)
 
 
