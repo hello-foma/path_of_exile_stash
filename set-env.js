@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const defaultApiUrl = "http://localhost/public-stash-tabs";
+const defaultApiUrl = "http://localhost:" + (process.env['PORT'] || 5000) + "/public-stash-tabs";
 const environmentFile = `% REPLACE ENV %
   apiUrl: '${process.env.API_URL || defaultApiUrl}',
   production: ${process.env.PRODUCTION || 'false'}

@@ -9,8 +9,9 @@
     "ng": "ng",
     "set-env": "node set-env.js",
     "start": "npm run set-env && json-server --watch db.json & ng serve",
-    "build": "ng build --prod",
-    "serve-build": "npm run set-env && node server.js",
+    "build": "ng build",
+    "server": "node server.js",
+    "serve-build": "npm run set-env && npm run server",
     "watch": "npm run set-env && ng build --watch --configuration development",
     "test": "ng test",
     "release": "standard-version"
