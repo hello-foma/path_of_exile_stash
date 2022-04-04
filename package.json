@@ -1,6 +1,10 @@
 {
   "name": "path-of-exile-stash",
   "version": "1.0.2",
+  "engines": {
+    "node": "16.13.1",
+    "npm": "8.1.2"
+  },
   "scripts": {
     "ng": "ng",
     "set-env": "node src/environments/set-env.js",
