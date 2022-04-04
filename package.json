@@ -10,7 +10,7 @@
     "set-env": "node set-env.js",
     "start": "npm run set-env && json-server --watch db.json & ng serve",
     "build": "ng build",
-    "serve-build": "npm run set-env && json-server db.json --static ./dist/path_of_exile_stash",
+    "serve-build": "npm run set-env && json-server db.json --static ./dist/path_of_exile_stash --host 127.0.0.1",
     "watch": "npm run set-env && ng build --watch --configuration development",
     "test": "ng test",
     "release": "standard-version"
