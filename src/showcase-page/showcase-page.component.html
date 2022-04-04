@@ -11,7 +11,7 @@
       </mat-form-field>
       <h3>Filter by league</h3>
       <section *ngFor="let league of leagueList | async">
-        <mat-checkbox [checked]="(filterByLeague | async)?.[league] || false"
+        <mat-checkbox [checked]="(filterByLeague | async)?.[league] || false" [color]="'primary'"
                       (change)="onLeagueFilterChange(league, $event)">{{ league }}</mat-checkbox>
       </section>
     </div>
