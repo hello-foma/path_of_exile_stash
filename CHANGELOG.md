@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.9](https://github.com/hello-foma/path_of_exile_stash/compare/v1.0.8...v1.0.9) (2022-04-04)
+
+
+### Bug Fixes
+
+* **build:** heroku ports ([e3cfc11](https://github.com/hello-foma/path_of_exile_stash/commit/e3cfc11da371a4567b5903f9e1e311620c2a0eca))
+
 ### [1.0.8](https://github.com/hello-foma/path_of_exile_stash/compare/v1.0.7...v1.0.8) (2022-04-04)
 
 
