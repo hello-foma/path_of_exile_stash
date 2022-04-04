@@ -1,1 +1,1 @@
-web: PORT=$PORT PRODUCTION=true npm run serve-build
+web: PORT=$PORT node server.js

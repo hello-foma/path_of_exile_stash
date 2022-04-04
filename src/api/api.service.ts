@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../environments/environment';
 
 import { ApiResponse } from './api-response.type';
 
@@ -23,7 +24,7 @@ export class ApiService {
    */
   public getFirstStash(): Promise<ApiResponse> {
     const query = '_limit=1';
-    const path = envVars.apiUrl + '?' + query;
+    const path = environment.apiUrl + '?' + query;
 
     // todo: filter corrupted data
     return ApiService.get<ApiResponse[]>(path).then(data => data[0]);
