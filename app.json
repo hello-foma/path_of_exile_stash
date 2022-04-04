@@ -1,0 +1,6 @@
+{
+  "name": "Path of Exile: Stash",
+  "description": "Angular application code sample",
+  "repository": "https://github.com/hello-foma/path_of_exile_stash",
+  "keywords": ["node", "angular", "static", "sample", "json-database"]
+}
