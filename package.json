@@ -1,6 +1,6 @@
 {
   "name": "path-of-exile-stash",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "engines": {
     "node": "16.13.1",
     "npm": "8.1.2"
