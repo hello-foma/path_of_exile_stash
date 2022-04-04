@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ApiService } from '../api/api.service';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BehaviorSubject, combineLatest, from, map, Observable, shareReplay } from 'rxjs';
+import { MatCheckboxChange } from '@angular/material/checkbox';
+
 import { Stash } from '../api/stash.type';
 import { Item } from '../api/item.type';
-import { MatCheckboxChange } from '@angular/material/checkbox';
+import { ApiService } from '../api/api.service';
 
 type LeagueFilter = {
   [league: string]: boolean
@@ -15,21 +16,17 @@ type LeagueFilter = {
   styleUrls: ['./showcase-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ShowcasePageComponent implements OnInit {
-  private searchStringEvent = new BehaviorSubject('');
-
+export class ShowcasePageComponent {
+  public searchString = '';
   public filterByLeague = new BehaviorSubject<LeagueFilter>({});
+  public searchStringEvent = new BehaviorSubject('');
   public stashes: Observable<Stash[]> = from(this.api.getFirstStash().then(({stashes}) => stashes));
   public leagueList: Observable<string[]> = from(this.initLeagueList());
   public filteredItems: Observable<Item[]> = this.initFilteredItems().pipe(shareReplay(1));
-  public searchString = '';
 
   constructor(
     private api: ApiService,
   ) { }
-
-  ngOnInit(): void {
-  }
 
   private async initLeagueList(): Promise<string[]> {
     const leagues = await this.api.getLeagueList();
@@ -43,6 +40,21 @@ export class ShowcasePageComponent implements OnInit {
     this.filterByLeague.next(filterValues);
 
     return leagues;
+  }
+
+  private initFilteredItems(): Observable<Item[]> {
+    return combineLatest([
+      this.stashes,
+      this.searchStringEvent,
+      this.filterByLeague
+    ]).pipe(
+      map(([stashes, searchString, filterByLeague]) => {
+        const filteredStashes = this.filterStashByLeague(stashes, filterByLeague);
+        const allItems = ([] as Item[]).concat(...filteredStashes.map((stash) => stash.items))
+
+        return this.filterItemsByString(allItems, searchString);
+      })
+    );
   }
 
   private filterItemsByString(items: Item[], searchString: string): Item[] {
@@ -68,21 +80,6 @@ export class ShowcasePageComponent implements OnInit {
     }
 
     return  stashes.filter((stash) => leagueFilter[stash.league]);
-  }
-
-  private initFilteredItems(): Observable<Item[]> {
-    return combineLatest([
-      this.stashes,
-      this.searchStringEvent,
-      this.filterByLeague
-    ]).pipe(
-      map(([stashes, searchString, filterByLeague]) => {
-        const filteredStashes = this.filterStashByLeague(stashes, filterByLeague);
-        const allItems = ([] as Item[]).concat(...filteredStashes.map((stash) => stash.items))
-
-        return this.filterItemsByString(allItems, searchString);
-      })
-    );
   }
 
   public onSearchType(text: string) {
