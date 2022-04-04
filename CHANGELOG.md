@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/hello-foma/path_of_exile_stash/compare/v1.0.0...v1.0.1) (2022-04-04)
+
+
+### Bug Fixes
+
+* **build:** fix npmrc registry ([3ed6e82](https://github.com/hello-foma/path_of_exile_stash/commit/3ed6e822451cd10542e9608ab6a59de5a98d31d3))
+
 ## [1.0.0](https://github.com/hello-foma/path_of_exile_stash/compare/v0.0.0...v1.0.0) (2022-04-04)
 
 ## 0.0.0 (2022-04-03)
