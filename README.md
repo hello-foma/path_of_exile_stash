@@ -4,6 +4,8 @@ I have made this application as part of the interview process.
 
 You can deploy it's locally by cloning and run `npm run start` or `npm run serve-build`.
 
+Preview, deployed on Heroku: https://path-of-exile-stash.herokuapp.com/
+
 Package ready to be deployed by Heroku platform. [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## Functionality:
